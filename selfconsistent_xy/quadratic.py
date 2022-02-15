@@ -83,7 +83,7 @@ def entanglement_entropy(n, S_x, S_y, S_z):
         Id = np.eye(2*n)
         Mat_A = (Id + iJ_psi)/2
 
-        lam = np.linalg.eigvalsh(Mat_A)
+        lam = np.abs(np.linalg.eigvalsh(Mat_A))+1e-13
         # print(lam)
 
         S_A = - np.sum(lam*np.log(lam))
