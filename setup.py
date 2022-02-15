@@ -8,7 +8,7 @@ with open('LICENSE') as f:
     license = f.read()
 
 setup(
-    name='selfconsxy',
+    name='selfconsistent_xy',
     version='0.0.1',
     description='From classical to quantum machine learning with tensor networks',
     long_description=readme,
@@ -16,5 +16,5 @@ setup(
     author_email='bojan.zunkovic@fri.uni-lj.si',
     url='https://github.com/znajob/qml-tn.git',
     license=license,
-    packages=["selfconsxy"],
+    packages=["selfconsistent_xy"],
 )
