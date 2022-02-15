@@ -1,5 +1,5 @@
 import argparse
-from selfonsxy.quadratic import single_trajectory_benettin_rescaling
+from selfconsxy.quadratic import single_trajectory_benettin_rescaling
 
 
 def phase_diagram_slice(eta, n, m, ginit, etainit, dt, ntim, savedir, output, gsinit):
