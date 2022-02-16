@@ -30,8 +30,7 @@ def Fidelity(S_x, S_y, S_z):
 
     inner_prod = c_1_q_0_conj*c_1_q_new + c_4_q_0_conj*c_4_q_new
 
-    echo = np.prod(inner_prod, axis=1)
-    echo = np.abs(echo)
+    echo = np.sum(np.log(np.abs(inner_prod)), axis=1)
     return echo
 
 
