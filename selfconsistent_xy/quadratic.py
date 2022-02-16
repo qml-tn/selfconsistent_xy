@@ -44,34 +44,38 @@ def entanglement_entropy(n, S_x, S_y, S_z):
         Yen_21 = np.zeros((n, n), dtype=complex)
         Yen_22 = np.zeros((n, n), dtype=complex)
         k_l = (np.pi*np.arange(-n+0.5, n))/n
-        for j in range(n):
-            for l in range(n):
-                for ind_k in range(2*n):
-                    if k_l[ind_k] < 0:
-                        ind_qp = -ind_k-1
-                        # we need to divide by approx 2*n the actual lattice-size
-                        Yen_12[j][l] += np.exp(1j*(j-l)*k_l[ind_k]) * \
-                                              (-S_x[ind_t, ind_qp]-1j *
-                                               S_y[ind_t, ind_qp])/(2*n)
-                        Yen_21[j][l] += -np.exp(1j*(j-l)*k_l[ind_k]) * \
-                            (-S_x[ind_t, ind_qp]+1j *
-                             S_y[ind_t, ind_qp])/(2*n)
-                        Yen_11[j][l] += np.exp(1j*(j-l)*k_l[ind_k]) * \
-                                              (S_z[ind_t, ind_qp])/(2*n)
-                        Yen_22[j][l] += -np.exp(1j*(l-j)*k_l[ind_k]) * \
-                            (S_z[ind_t, ind_qp])/(2*n)
-                    else:
-                        ind_qp = ind_k-n
-                        Yen_12[j][l] += np.exp(1j*(j-l)*k_l[ind_k]) * \
-                                              (S_x[ind_t, ind_qp] + 1j *
-                                               S_y[ind_t, ind_qp])/(2*n)
-                        Yen_21[j][l] += -np.exp(1j*(j-l)*k_l[ind_k]) * \
-                            (S_x[ind_t, ind_qp] - 1j *
-                             S_y[ind_t, ind_qp])/(2*n)
-                        Yen_11[j][l] += np.exp(1j*(j-l)*k_l[ind_k]) * \
-                                              (S_z[ind_t, ind_qp])/(2*n)
-                        Yen_22[j][l] += -np.exp(1j*(l-j)*k_l[ind_k]) * \
-                            (S_z[ind_t, ind_qp])/(2*n)
+
+        j = np.array([np.arange(n)])
+        pid=np.transpose(j)-j # phase index difference
+
+        for ind_k in range(2*n):
+            if k_l[ind_k] < 0:
+                ind_qp = -ind_k-1
+                # we need to divide by approx 2*n the actual lattice-size
+                Yen_12 += np.exp(1j*pid*k_l[ind_k]) * \
+                                      (-S_x[ind_t, ind_qp]-1j *
+                                        S_y[ind_t, ind_qp])/(2*n)
+                Yen_21 += -np.exp(1j*pid*k_l[ind_k]) * \
+                    (-S_x[ind_t, ind_qp]+1j *
+                      S_y[ind_t, ind_qp])/(2*n)
+                Yen_11 += np.exp(1j*pid*k_l[ind_k]) * \
+                                      (S_z[ind_t, ind_qp])/(2*n)
+                Yen_22 += -np.exp(-1j*pid*k_l[ind_k]) * \
+                    (S_z[ind_t, ind_qp])/(2*n)
+            else:
+                ind_qp = ind_k-n
+                Yen_12 += np.exp(1j*pid*k_l[ind_k]) * \
+                                      (S_x[ind_t, ind_qp] + 1j *
+                                        S_y[ind_t, ind_qp])/(2*n)
+                Yen_21 += -np.exp(1j*pid*k_l[ind_k]) * \
+                    (S_x[ind_t, ind_qp] - 1j *
+                      S_y[ind_t, ind_qp])/(2*n)
+                Yen_11 += np.exp(1j*pid*k_l[ind_k]) * \
+                                      (S_z[ind_t, ind_qp])/(2*n)
+                Yen_22 += -np.exp(-1j*pid*k_l[ind_k]) * \
+                    (S_z[ind_t, ind_qp])/(2*n)
+
+        
         # Now construct the covariant-matrices iJ_psi
         iJ_psi = np.zeros((2*n, 2*n), dtype=complex)
 
@@ -82,9 +86,8 @@ def entanglement_entropy(n, S_x, S_y, S_z):
 
         Id = np.eye(2*n)
         Mat_A = (Id + iJ_psi)/2
-
-        lam = np.abs(np.linalg.eigvalsh(Mat_A))+1e-13
-        # print(lam)
+        eps = 1e-13
+        lam = abs(np.linalg.eigvalsh(Mat_A)) + eps
 
         S_A = - np.sum(lam*np.log(lam))
         S_A_t[ind_t] = S_A
@@ -114,7 +117,6 @@ def single_trajectory_benettin_rescaling(params):
     yinit = initial_state(n, m=m, eta=etainit, h=ginit)
 
     if (m > 0):
-
         q = (np.array(range(n))+0.5)*np.pi/(n)
         ce = np.cos(eta)
         se = np.sin(eta)
@@ -146,7 +148,7 @@ def single_trajectory_benettin_rescaling(params):
             print('done:', (i+1)/ntim, "time: "+str(tend-tstart), end="\r")
             # print('done:',(i+1)/ntim,"time: "+str(tend-tstart))
         tendAll = time.clock()
-        # print("time: "+str(tendAll-tstartAll))
+        # print("Finished evolution: "+str(tendAll-tstartAll))
 
     else:
         lyap = None
@@ -165,22 +167,28 @@ def single_trajectory_benettin_rescaling(params):
                      hmax=5e-4, atol=1e-16, rtol=1e-13)
         z = get_transverse_magnetization(sol)
         tend = time.clock()
-        # print("time: "+str(tend-tstart))
+        # print("Finished evolution: "+str(tend-tstart))
 
     x = sol[:, :n]
     y = sol[:, n:2*n]
     z = sol[:, 2*n:3*n]
 
+    t1 = time.time()
     fid = Fidelity(x, y, z)
+    t2 = time.time()
+    # print(f"Finished fidelity: {t2-t1}s")
+    t1 = time.time()
     ent = entanglement_entropy(n, x, y, z)
+    t2 = time.time()
+    # print(f"Finished entropy: {t2-t1}s")
 
     if(output == 'lyap' and m > 0):
         _, R = np.linalg.qr(np.reshape(sol[-1, 3*n:], [3*n, m]))
-        return np.log(abs(np.diag(R))/(dt*ntim)), ent, fid
+        return np.log(abs(np.diag(R))/(dt*ntim)), ent, fid, sol
     elif(output == 'tlyap' and m > 0):
         eps = 1e-7
         # tlyap = np.log(lyap)+np.cumsum(np.log(abs(rescaling[:ntim, :])), 0)
-        return tlist, z, lyap, rescaling, ent, fid
+        return tlist, z, lyap, rescaling, ent, fid, sol
     elif(output == 'save'):
         filename = os.path.join(filepath, "tlist.npy")
         np.save(filename, np.array(tlist))
@@ -236,14 +244,14 @@ def Jacobian(s, g, By, Bz):
     J = np.zeros([3*n, 3*n])
     for i in range(n):
         for j in range(n):
-            J[3*i, 3*j+2] = 4*g*sy[i]/(n-1)
-            J[3*i+1, 3*j+2] = -4*g*sx[i]/(n-1)
+            J[3*i, 3*j+2] = 4*g*sy[i]/n
+            J[3*i+1, 3*j+2] = -4*g*sx[i]/n
             if (i == j):
                 J[3*i, 3*j+1] = J[3*i, 3*j+1] + Bz[i]+4*h
                 J[3*i, 3*j+2] = J[3*i, 3*j+2] - By[i]
                 J[3*i+1, 3*j] = J[3*i+1, 3*j] - Bz[i]-4*h
                 J[3*i+2, 3*j] = J[3*i+2, 3*j] + By[i]
-#     return  sparse.csr_matrix(J)
+    # return  sparse.csr_matrix(J)
     return J
 
 
