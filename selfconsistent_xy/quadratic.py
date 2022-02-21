@@ -135,12 +135,12 @@ def single_trajectory_benettin_rescaling(params):
 
         nt = int(dt/0.01)
         t = np.linspace(0, dt, nt)
-        tstartAll = time.clock()
+        tstartAll = time.time()
         for i in tqdm(range(ntim)):
-            tstart = time.clock()
+            tstart = time.time()
             sol0 = odeint(dfbenettin, yinit, t, (par,),
                           hmax=5e-4, atol=1e-18, rtol=1e-13)
-            tend = time.clock()
+            tend = time.time()
             yinit, lyap[i+1, :], rescaling[i+1,
                                            :] = get_lyapunov_coefficient_and_rescale(sol0[-1], n, m, thresh=1e2)
             sol[i+1, :] = yinit
@@ -148,7 +148,7 @@ def single_trajectory_benettin_rescaling(params):
             z[i+1] = np.mean(yinit[2*n:3*n])
             # print('done:', (i+1)/ntim, "time: "+str(tend-tstart), end="\r")
             # print('done:',(i+1)/ntim,"time: "+str(tend-tstart))
-        tendAll = time.clock()
+        tendAll = time.time()
         # print("Finished evolution: "+str(tendAll-tstartAll))
 
     else:
@@ -162,12 +162,12 @@ def single_trajectory_benettin_rescaling(params):
         Bz = 4*(np.cos(q)*(ce+se))
         par = (g, n, By, Bz)
 
-        tstart = time.clock()
+        tstart = time.time()
         tlist = np.linspace(0, dt*ntim, ntim+1)
         sol = odeint(derivative, yinit, tlist, (par,),
                      hmax=5e-4, atol=1e-16, rtol=1e-13)
         z = get_transverse_magnetization(sol)
-        tend = time.clock()
+        tend = time.time()
         # print("Finished evolution: "+str(tend-tstart))
 
     x = sol[:, :n]
