@@ -31,7 +31,7 @@ if __name__ == '__main__':
                         help='Initial transverse field.')
     parser.add_argument('--etainit',
                         type=float,
-                        default=np.pi/4,
+                        default=0.1,
                         help='Angle of the initial state.')
     parser.add_argument('--dt',
                         type=float,
