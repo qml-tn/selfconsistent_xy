@@ -2,6 +2,7 @@ import numpy as np
 import os
 from scipy.integrate import odeint
 import time
+from tqdm import tqdm
 
 def Fidelity(S_x, S_y, S_z):
     ind_t = 0
@@ -135,7 +136,7 @@ def single_trajectory_benettin_rescaling(params):
         nt = int(dt/0.01)
         t = np.linspace(0, dt, nt)
         tstartAll = time.clock()
-        for i in range(ntim):
+        for i in tqdm(range(ntim)):
             tstart = time.clock()
             sol0 = odeint(dfbenettin, yinit, t, (par,),
                           hmax=5e-4, atol=1e-18, rtol=1e-13)
@@ -145,7 +146,7 @@ def single_trajectory_benettin_rescaling(params):
             sol[i+1, :] = yinit
             tlist[i+1] = (i+1)*dt
             z[i+1] = np.mean(yinit[2*n:3*n])
-            print('done:', (i+1)/ntim, "time: "+str(tend-tstart), end="\r")
+            # print('done:', (i+1)/ntim, "time: "+str(tend-tstart), end="\r")
             # print('done:',(i+1)/ntim,"time: "+str(tend-tstart))
         tendAll = time.clock()
         # print("Finished evolution: "+str(tendAll-tstartAll))
