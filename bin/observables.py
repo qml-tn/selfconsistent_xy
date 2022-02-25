@@ -2,7 +2,7 @@ import argparse
 from selfconsistent_xy.quadratic import single_trajectory_benettin_rescaling
 import numpy as np
 
-def phase_diagram_slice(eta, n, m, ginit, etainit, dt, ntim, savedir, output, gsinit, geval_start):
+def phase_diagram_slice(eta, n, m, ginit, etainit, dt, ntim, savedir, output, gsinit, gevol_start=0, gevol_end=10):
     glist = np.arange(gevol_start, gevol_end, 0.02)
     for g in glist:
         print(n, eta, g)
