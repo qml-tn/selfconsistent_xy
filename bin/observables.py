@@ -2,8 +2,8 @@ import argparse
 from selfconsistent_xy.quadratic import single_trajectory_benettin_rescaling
 import numpy as np
 
-def phase_diagram_slice(eta, n, m, ginit, etainit, dt, ntim, savedir, output, gsinit):
-    glist = np.arange(0, 10, 0.02)
+def phase_diagram_slice(eta, n, m, ginit, etainit, dt, ntim, savedir, output, gsinit, geval_start):
+    glist = np.arange(gevol_start, gevol_end, 0.02)
     for g in glist:
         print(n, eta, g)
         params = (g, eta, n, m, ginit, etainit, dt,
@@ -17,6 +17,14 @@ if __name__ == '__main__':
                         type=float,
                         default=0,
                         help='Interaction angle.')
+    parser.add_argument('--gevol_start',
+                        type=float,
+                        default=0,
+                        help='ZZ interaction strength for the evolution Hamiltonian. Start of the sweep.')
+    parser.add_argument('--gevol_end',
+                        type=float,
+                        default=10,
+                        help='ZZ interaction strength for the evolution Hamiltonian. End of the sweep.')
     parser.add_argument('--n',
                         type=int,
                         default=100,
