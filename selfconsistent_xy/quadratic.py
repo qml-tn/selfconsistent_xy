@@ -104,10 +104,10 @@ def single_trajectory_benettin_rescaling(params):
     if (output == 'save'):
         if gsinit:
             filepath = os.path.join(savedir, "phaseDiagram", 'etainit_eta',
-                                    "ginit"+str(ginit), "n"+str(n), 'eta'+str(eta), "g"+str(g))
+                                    "ginit"+str(ginit), "n"+str(n), 'eta'+str(eta), "ntim" + str(ntim), "g"+str(g))
         else:
             filepath = os.path.join(savedir, "phaseDiagram", 'etainit'+str(
-                etainit), "ginit"+str(ginit), "n"+str(n), 'eta'+str(eta), "g"+str(g))
+                etainit), "ginit"+str(ginit), "n"+str(n), 'eta'+str(eta), "ntim" + str(ntim), "g"+str(g))
         if(os.path.exists(filepath)):
             if (len(os.listdir(filepath)) >= 2):
                 return True

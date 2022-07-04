@@ -1,0 +1,10 @@
+rp72e0n500epi0.25; cpu; 32; 32; cpu; python observables.py --savedir /ceph/hpc/home/zegarraa/selfconsistent_xy/data --ginit 1e-10 --n 500 --m 1 --etainit -0.7854 --ntim 500 --eta 0 --gevol_start 1.0
+rp73e0n500epi0.25; cpu; 32; 32; cpu; python observables.py --savedir /ceph/hpc/home/zegarraa/selfconsistent_xy/data --ginit 1e-10 --n 500 --m 1 --etainit -0.7854 --ntim 500 --eta 0 --gevol_start 1.5
+rp74e0n500epi0.25; cpu; 32; 32; cpu; python observables.py --savedir /ceph/hpc/home/zegarraa/selfconsistent_xy/data --ginit 1e-10 --n 500 --m 1 --etainit -0.7854 --ntim 500 --eta 0 --gevol_start 2.0
+rp75e0n500epi0.25; cpu; 32; 32; cpu; python observables.py --savedir /ceph/hpc/home/zegarraa/selfconsistent_xy/data --ginit 1e-10 --n 500 --m 1 --etainit -0.7854 --ntim 500 --eta 0 --gevol_start 2.5
+rp76e0n500epi0.25; cpu; 32; 32; cpu; python observables.py --savedir /ceph/hpc/home/zegarraa/selfconsistent_xy/data --ginit 1e-10 --n 500 --m 1 --etainit -0.7854 --ntim 500 --eta 0 --gevol_start 3.0
+rp72e0.15n500epi0.25; cpu; 32; 32; cpu; python observables.py --savedir /ceph/hpc/home/zegarraa/selfconsistent_xy/data --ginit 1e-10 --n 500 --m 1 --etainit -0.7854 --ntim 500 --eta -0.15 --gevol_start 1.0
+rp73e0.15n500epi0.25; cpu; 32; 32; cpu; python observables.py --savedir /ceph/hpc/home/zegarraa/selfconsistent_xy/data --ginit 1e-10 --n 500 --m 1 --etainit -0.7854 --ntim 500 --eta -0.15 --gevol_start 1.5
+rp74e0.15n500epi0.25; cpu; 32; 32; cpu; python observables.py --savedir /ceph/hpc/home/zegarraa/selfconsistent_xy/data --ginit 1e-10 --n 500 --m 1 --etainit -0.7854 --ntim 500 --eta -0.15 --gevol_start 2.0
+rp75e0.15n500epi0.25; cpu; 32; 32; cpu; python observables.py --savedir /ceph/hpc/home/zegarraa/selfconsistent_xy/data --ginit 1e-10 --n 500 --m 1 --etainit -0.7854 --ntim 500 --eta -0.15 --gevol_start 2.5
+rp76e0.15n500epi0.25; cpu; 32; 32; cpu; python observables.py --savedir /ceph/hpc/home/zegarraa/selfconsistent_xy/data --ginit 1e-10 --n 500 --m 1 --etainit -0.7854 --ntim 500 --eta -0.15 --gevol_start 3.0

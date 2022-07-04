@@ -1,0 +1,16 @@
+rp93e0n250e0; cpu; 32; 32; cpu; python observables.py --savedir /ceph/hpc/home/zegarraa/selfconsistent_xy/data --ginit 1e-10 --n 250 --m 1 --etainit 0 --ntim 500 --eta 0 --gevol_start 1.5
+rp94e0n250e0; cpu; 32; 32; cpu; python observables.py --savedir /ceph/hpc/home/zegarraa/selfconsistent_xy/data --ginit 1e-10 --n 250 --m 1 --etainit 0 --ntim 500 --eta 0 --gevol_start 2.0
+rp95e0n250e0; cpu; 32; 32; cpu; python observables.py --savedir /ceph/hpc/home/zegarraa/selfconsistent_xy/data --ginit 1e-10 --n 250 --m 1 --etainit 0 --ntim 500 --eta 0 --gevol_start 2.5
+rp96e0n250e0; cpu; 32; 32; cpu; python observables.py --savedir /ceph/hpc/home/zegarraa/selfconsistent_xy/data --ginit 1e-10 --n 250 --m 1 --etainit 0 --ntim 500 --eta 0 --gevol_start 3.0
+rp93e0.15n250e0; cpu; 32; 32; cpu; python observables.py --savedir /ceph/hpc/home/zegarraa/selfconsistent_xy/data --ginit 1e-10 --n 250 --m 1 --etainit 0 --ntim 500 --eta -0.15 --gevol_start 1.5
+rp94e0.15n250e0; cpu; 32; 32; cpu; python observables.py --savedir /ceph/hpc/home/zegarraa/selfconsistent_xy/data --ginit 1e-10 --n 250 --m 1 --etainit 0 --ntim 500 --eta -0.15 --gevol_start 2.0
+rp95e0.15n250e0; cpu; 32; 32; cpu; python observables.py --savedir /ceph/hpc/home/zegarraa/selfconsistent_xy/data --ginit 1e-10 --n 250 --m 1 --etainit 0 --ntim 500 --eta -0.15 --gevol_start 2.5
+rp96e0.15n250e0; cpu; 32; 32; cpu; python observables.py --savedir /ceph/hpc/home/zegarraa/selfconsistent_xy/data --ginit 1e-10 --n 250 --m 1 --etainit 0 --ntim 500 --eta -0.15 --gevol_start 3.0
+rp93e0n500e0; cpu; 32; 32; cpu; python observables.py --savedir /ceph/hpc/home/zegarraa/selfconsistent_xy/data --ginit 1e-10 --n 500 --m 1 --etainit 0 --ntim 250 --eta 0 --gevol_start 1.5
+rp94e0n500e0; cpu; 32; 32; cpu; python observables.py --savedir /ceph/hpc/home/zegarraa/selfconsistent_xy/data --ginit 1e-10 --n 500 --m 1 --etainit 0 --ntim 250 --eta 0 --gevol_start 2.0
+rp95e0n500e0; cpu; 32; 32; cpu; python observables.py --savedir /ceph/hpc/home/zegarraa/selfconsistent_xy/data --ginit 1e-10 --n 500 --m 1 --etainit 0 --ntim 250 --eta 0 --gevol_start 2.5
+rp96e0n500e0; cpu; 32; 32; cpu; python observables.py --savedir /ceph/hpc/home/zegarraa/selfconsistent_xy/data --ginit 1e-10 --n 500 --m 1 --etainit 0 --ntim 250 --eta 0 --gevol_start 3.0
+rp93e0.15n500e0; cpu; 32; 32; cpu; python observables.py --savedir /ceph/hpc/home/zegarraa/selfconsistent_xy/data --ginit 1e-10 --n 500 --m 1 --etainit 0 --ntim 250 --eta -0.15 --gevol_start 1.5
+rp94e0.15n500e0; cpu; 32; 32; cpu; python observables.py --savedir /ceph/hpc/home/zegarraa/selfconsistent_xy/data --ginit 1e-10 --n 500 --m 1 --etainit 0 --ntim 250 --eta -0.15 --gevol_start 2.0
+rp95e0.15n500e0; cpu; 32; 32; cpu; python observables.py --savedir /ceph/hpc/home/zegarraa/selfconsistent_xy/data --ginit 1e-10 --n 500 --m 1 --etainit 0 --ntim 250 --eta -0.15 --gevol_start 2.5
+rp96e0.15n500e0; cpu; 32; 32; cpu; python observables.py --savedir /ceph/hpc/home/zegarraa/selfconsistent_xy/data --ginit 1e-10 --n 500 --m 1 --etainit 0 --ntim 250 --eta -0.15 --gevol_start 3.0
